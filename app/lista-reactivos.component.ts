@@ -5,8 +5,7 @@ import {ProfesorService} from './profesor.service';
 
 @Component({
   selector: 'lista-reactivos',
-  templateUrl: 'app/lista-reactivos.component.html',
-  styleUrls: ['app/lista-reactivos.component.css']
+  templateUrl: 'app/lista-reactivos.component.html'
 })
 export class ListaReactivosComponent implements OnInit {
 
