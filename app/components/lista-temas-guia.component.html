@@ -1,0 +1,12 @@
+<div class="container-fluid">
+	<div class="row">
+ 	 <div class="col-sm-3 col-md-3 sidebar">
+			 <h4>Temas Gu&iacute;a</h4>
+			 <div class="list-group">
+				 <a *ngFor="#tema of temas" role="button" class="list-group-item">
+						<span class="label label-default">{{tema.area}}</span>  {{tema.titulo}}
+			   </a>
+			 </div>
+		 </div>
+ 	 </div>
+</div>

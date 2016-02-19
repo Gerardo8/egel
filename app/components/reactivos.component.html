@@ -1,0 +1,41 @@
+<div *ngFor="#profesor of profesores">
+ <div *ngFor="#reactivo of profesor.reactivos">
+   <div *ngIf="area == reactivo.tema">
+     <div class="panel panel-default">
+       <div class="panel-heading">Tema: {{reactivo.tema}}</div>
+         <div class="panel-body">
+           <h5>Pregunta</h5>
+           <p>{{reactivo.pregunta}}</p>
+           <div *ngFor="#opcion of reactivo.opciones" class="radio">
+             <label>
+               <input (click)="onSelectOpcion(opcion.acierto)"
+               type="radio" [(ngModel)]="opcion.acierto" name="opcion" [value]="true">
+               {{opcion.titulo}}
+             </label>
+           </div>
+            <button (click)="enviar(selectedOpcion)" type="button" class="btn btn-default"
+            data-toggle="modal" data-target="#myModal">Ver respuesta</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" [class.text-danger]="respuesta ==='Falso'"
+                    [class.text-success]="respuesta ==='Correcto'">{{respuesta}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>{{reactivo.retroalimentacion}}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+     </div>
+   </div>
+ </div>
+</div>
