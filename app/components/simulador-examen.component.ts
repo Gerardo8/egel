@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, RouterOutlet} from 'angular2/router';
+import {RouteConfig} from 'angular2/router';
 
 import {ListaTemasSimuladorComponent} from './lista-temas-simulador.component';
 import {ReactivosComponent} from './reactivos.component';
@@ -24,7 +24,4 @@ import {SimuladorExamenDefaultComponent} from './simulador-examen-default.compon
   }
 ])
 
-export class SimuladorExamenComponent{
-
-
-}
+export class SimuladorExamenComponent{}

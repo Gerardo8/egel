@@ -1,46 +1,30 @@
 import {Component, OnInit} from 'angular2/core';
-import {NgSwitch, NgSwitchWhen} from 'angular2/common';
-import {HTTP_PROVIDERS} from 'angular2/http';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {InicioComponent} from '././components/inicio.component';
-import {GuiaComponent} from '././components/guia.component';
-import {SimuladorExamenComponent} from '././components/simulador-examen.component';
-
+import {IniciarSesionComponent} from './components/iniciar-sesion.component';
+import {EgelComponent} from './components/egel.component';
 import {ProfesorService} from './services/profesor.service';
-import {TemaService} from './services/tema.service';
 
 @Component({
     selector: 'app',
-    templateUrl: 'app/app.component.html',
+    template: '<router-outlet></router-outlet>',
     directives:[
       ROUTER_DIRECTIVES,
-      NgSwitch,
-      NgSwitchWhen
     ],
-    providers: [
-      HTTP_PROVIDERS,
-      ProfesorService,
-      TemaService
-    ]
+    providers:[ProfesorService]
 })
 
 @RouteConfig([
+  { path: '/', redirectTo: ['IniciarSesion'] },
   {
-    path: '/inicio',
-    name: 'Inicio',
-    component: InicioComponent,
-    useAsDefault: true
+    path: '/iniciar-sesion',
+    name: 'IniciarSesion',
+    component: IniciarSesionComponent
   },
   {
-    path: '/guia',
-    name: 'Guia',
-    component: GuiaComponent
-  },
-  {
-    path: '/simulador-examen/...',
-    name: 'SimuladorExamen',
-    component: SimuladorExamenComponent
+    path: '/...',
+    name: 'Egel',
+    component: EgelComponent
   }
 ])
 

@@ -1,14 +1,12 @@
 import {Component, OnInit} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 
-import {Profesor} from '../model/profesor';
 import {Reactivo} from '../model/reactivo';
-import {Tema} from '../model/tema';
-import {ProfesorService} from '../services/profesor.service';
-import {ListaTemasSimuladorComponent} from './lista-temas-simulador.component';
+import {ReactivoService} from '../services/reactivo.service';
 
 @Component({
-  templateUrl: 'app/components/reactivos.component.html'
+  templateUrl: 'app/components/reactivos.component.html',
+  providers:[ReactivoService]
 })
 export class ReactivosComponent implements OnInit {
 
@@ -16,42 +14,35 @@ export class ReactivosComponent implements OnInit {
   errorMessage: string;
   respuesta:string;
   selectedOpcion:boolean;
-  profesores: Profesor[];
-  reactivo:Reactivo = new Reactivo();
+  reactivos:Reactivo[];
+  reactivo:Reactivo;
 
   constructor (
-    private _profesorService: ProfesorService,
+    private _reactivoService: ReactivoService,
     private routeParams: RouteParams) {
         this.area = ""+routeParams.get('area');
     }
 
   ngOnInit(){
-    this.getProfesores();
+    this.getReactivosPorTema(this.area);
   }
 
-  getProfesores() {
-    this._profesorService.getProfesores()
+  getReactivosPorTema(area:string) {
+    this._reactivoService.getReactivosPorTema(area)
                      .subscribe(
-                       profesores => this.profesores = profesores,
+                       reactivos => this.reactivos = reactivos,
                        error =>  this.errorMessage = <any>error);
   }
 
-  getReactivos(){
-    console.log('dfsdfsd');
-  }
-
   onSelectOpcion(acierto:boolean){
-    this.respuesta = undefined;
     this.selectedOpcion = acierto;
-    console.log(this.selectedOpcion);
   }
 
-  enviar(selectedOpcion){
-    if(!selectedOpcion){
+  verRespuesta(){
+    if(!this.selectedOpcion){
       this.respuesta='Falso';
     }else{
       this.respuesta='Correcto';
     }
-    console.log(selectedOpcion);
   }
 }

@@ -5,7 +5,8 @@ import {TemaService} from '../services/tema.service';
 
 @Component({
   selector: 'lista-temas-guia',
-  templateUrl: 'app/components/lista-temas-guia.component.html'
+  templateUrl: 'app/components/lista-temas-guia.component.html',
+  providers:[TemaService]
 })
 
 export class ListaTemasGuiaComponent implements OnInit{

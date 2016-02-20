@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" role="button">EGEL</a>
+    </div>
+    <div>
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" #login placeholder="Login" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" #password placeholder="Password" class="form-control">
+        </div>
+        <button (click)="signIn(login.value,password.value)" class="btn btn-success">Sign in</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div>
+  <h1 class="text-danger">{{respuesta}}</h1>
+</div>

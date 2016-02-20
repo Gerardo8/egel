@@ -1,14 +1,14 @@
 import {Component, OnInit} from 'angular2/core';
-import { RouteConfig,Router, RouterOutlet} from 'angular2/router';
+import {Router, RouterOutlet} from 'angular2/router';
 
 import {Tema} from '../model/tema';
 import {TemaService} from '../services/tema.service';
-import {ReactivosComponent} from './reactivos.component';
 
 @Component({
   selector: 'lista-temas-simulador',
   templateUrl: 'app/components/lista-temas-simulador.component.html',
-  directives:[RouterOutlet]
+  directives:[RouterOutlet],
+  providers:[TemaService]
 })
 
 
