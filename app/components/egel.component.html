@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" role="button">EGEL</a>
@@ -9,6 +9,9 @@
         <li><a [routerLink]="['Guia']">Gu&iacute;a</a></li>
         <li><a [routerLink]="['SimuladorExamen']">Simulador Examen</a></li>
       </ul>
+      <form class="navbar-form navbar-right">
+        <button (click)="cerrarSesion()" class="btn btn-success">Cerrar Sesion</button>
+      </form>
     </div>
   </div>
 </nav>

@@ -9,8 +9,8 @@ import {ProfesorService} from '../services/profesor.service';
 })
 export class IniciarSesionComponent{
 
-  respuesta:string;
-  profesor:Profesor;
+  loginSinValor:boolean;
+  passwordSinValor:boolean;
   errorMessage:string;
 
   constructor(
@@ -18,18 +18,24 @@ export class IniciarSesionComponent{
     private _router:Router
   ){}
 
-  signIn(login:string,password:string){
-    if (!login || !password) {
-       console.log('no');
+  iniciarSesion(login:string,password:string){
+    if (!login) {
+       this.loginSinValor = true;
        return;
-     }
+     }else this.loginSinValor = false;
+    if (!password) {
+      this.passwordSinValor = true;
+      return;
+    }else this.passwordSinValor = false;
        this._profesorService.autenticar(login,password)
        .subscribe(
        profesor => {
-         this.profesor = profesor;
-         if(this.profesor){
+         if(profesor){
+           localStorage.setItem('profesor', JSON.stringify(profesor));
            this._router.parent.navigate(['Egel']);
-         }else this.respuesta = 'Datos incorrectos';
+         }else {
+           jQuery('#Modal').modal('toggle');
+         };
        },
        error =>  this.errorMessage = <any>error);
 
